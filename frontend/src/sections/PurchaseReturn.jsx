@@ -3,12 +3,18 @@ import { Link } from "react-router-dom"
 import axios, { all } from 'axios';
 import InvoiceItems from '../components/InvoiceItems';
 import InvoiceItemsForm from '../components/InvoiceItemsForm';
+import SalesReturnfun from '../components/SalesReturn'
+import SalesReturnItemsForm from '../components/SalesReturnItemsForm';
+import PurchaseItemsForm from '../components/PurchaseItemForm';
+
+import PurchaseReturn from '../components/PurchaseReturn'
 import InvoiceForm from '../components/InvoiceForm';
 import { Helmet } from 'react-helmet';
+
 import DataContext from '../context/DataContext';
 
 
-const PurchaseReturn = (
+const PurchaseReturnItem = (
 ) => {
 
   const { handleInvoiceSubmit, invoiceID, setInvoiceID, invoicePartnerid, setInvoicePartnerid, invoiceDate, setInvoiceDate, invoiceDueDate, setInvoiceDueDate, invoiceStatus, setInvoiceStatus, partners, invoiceItems, setInvoiceItems } = useContext(DataContext);
@@ -44,7 +50,7 @@ const PurchaseReturn = (
       rate: itemRate
     }
     try {
-      const response = await axios.post(`${apiUrl}items`, createInoviceItem)
+      const response = await axios.post(`${apiUrl}salesreturn`, createInoviceItem)
       const AllInvoiceItems = [...invoiceItems, response.data];
       setInvoiceItems(AllInvoiceItems)
       // Clear
@@ -59,7 +65,7 @@ const PurchaseReturn = (
   // Delete Invoice item
   const handleInvoiceItemDelete = async (id) => {
     try {
-      await axios.delete(`${apiUrl}items/${id}`)
+      await axios.delete(`${apiUrl}salesreturn/${id}`)
       const invoiceItemsList = invoiceItems.filter(invoice => invoice._id !== id)
       setInvoiceItems(invoiceItemsList)
     } catch (err) {
@@ -72,7 +78,7 @@ const PurchaseReturn = (
       <Helmet>
         <title>New Invoices - Invoice App</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-4">Purchase Return</h1>
+      <h1 className="text-2xl font-bold mb-4">Sales Return</h1>
 
       <div className='flex flex-col md:flex-row gap-10'>
 
@@ -93,9 +99,9 @@ const PurchaseReturn = (
         </div>
 
         <div className='w-full md:w-2/3'>
-          <h2 className="text-xl text-coral-red font-semibold">Purchase items</h2>
+          <h2 className="text-xl text-coral-red font-semibold">Sales items</h2>
 
-          <InvoiceItemsForm
+          <PurchaseItemsForm
             handleInvoiceItemSubmit={handleInvoiceItemSubmit}
             itemDesc={itemDesc}
             setItemDesc={setItemDesc}
@@ -105,7 +111,7 @@ const PurchaseReturn = (
             setItemRate={setItemRate}
           />
 
-          <InvoiceItems
+          <PurchaseReturn
             invoiceItems={invoiceItems}
             handleInvoiceItemDelete={handleInvoiceItemDelete}
             generateInvoiceID={generateInvoiceID}
@@ -117,4 +123,4 @@ const PurchaseReturn = (
   )
 }
 
-export default PurchaseReturn
+export default PurchaseReturnItem

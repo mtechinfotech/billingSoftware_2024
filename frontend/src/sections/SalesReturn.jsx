@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import axios, { all } from 'axios';
 import InvoiceItems from '../components/InvoiceItems';
 import InvoiceItemsForm from '../components/InvoiceItemsForm';
+import SalesReturnfun from '../components/SalesReturn'
+import SalesReturnItemsForm from '../components/SalesReturnItemsForm';
 import InvoiceForm from '../components/InvoiceForm';
 import { Helmet } from 'react-helmet';
 import DataContext from '../context/DataContext';
@@ -44,7 +46,7 @@ const SalesReturn = (
       rate: itemRate
     }
     try {
-      const response = await axios.post(`${apiUrl}items`, createInoviceItem)
+      const response = await axios.post(`${apiUrl}salesreturn`, createInoviceItem)
       const AllInvoiceItems = [...invoiceItems, response.data];
       setInvoiceItems(AllInvoiceItems)
       // Clear
@@ -59,7 +61,7 @@ const SalesReturn = (
   // Delete Invoice item
   const handleInvoiceItemDelete = async (id) => {
     try {
-      await axios.delete(`${apiUrl}items/${id}`)
+      await axios.delete(`${apiUrl}salesreturn/${id}`)
       const invoiceItemsList = invoiceItems.filter(invoice => invoice._id !== id)
       setInvoiceItems(invoiceItemsList)
     } catch (err) {
@@ -95,7 +97,7 @@ const SalesReturn = (
         <div className='w-full md:w-2/3'>
           <h2 className="text-xl text-coral-red font-semibold">Sales items</h2>
 
-          <InvoiceItemsForm
+          <SalesReturnItemsForm
             handleInvoiceItemSubmit={handleInvoiceItemSubmit}
             itemDesc={itemDesc}
             setItemDesc={setItemDesc}
@@ -105,7 +107,7 @@ const SalesReturn = (
             setItemRate={setItemRate}
           />
 
-          <InvoiceItems
+          <SalesReturnfun
             invoiceItems={invoiceItems}
             handleInvoiceItemDelete={handleInvoiceItemDelete}
             generateInvoiceID={generateInvoiceID}

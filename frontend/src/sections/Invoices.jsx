@@ -19,7 +19,10 @@ const Invoices = () => {
       <p className='pb-6 pt-3'>Total invoices: {invoicesSearchResults.length}</p>
 
       <div className='flex justify-between'>
-        <Link to="../new-invoice" className='px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600'>New Invoice</Link>
+        <Link to="../new-invoice" className='px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600'>New Sales</Link>
+        <Link to="../sales-return" className='px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600'>Sales - Return</Link>
+        <Link to="../purchase" className='px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600'>New Purchase</Link>
+        <Link to="../purchase-return" className='px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600'>Purchase - Return</Link>
 
         <form className='flex-shrink-0 w-2/5' onSubmit={(e) => e.preventDefault()}>
           <input className='input'

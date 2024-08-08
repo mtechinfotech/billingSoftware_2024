@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import DataContext from '../context/DataContext';
 
 
-const NewInvoice = (
+const Purchase = (
 ) => {
 
   const { handleInvoiceSubmit, invoiceID, setInvoiceID, invoicePartnerid, setInvoicePartnerid, invoiceDate, setInvoiceDate, invoiceDueDate, setInvoiceDueDate, invoiceStatus, setInvoiceStatus, partners, invoiceItems, setInvoiceItems } = useContext(DataContext);
@@ -72,7 +72,7 @@ const NewInvoice = (
       <Helmet>
         <title>New Invoices - Invoice App</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-4">New Sales</h1>
+      <h1 className="text-2xl font-bold mb-4">New Purchase</h1>
 
       <div className='flex flex-col md:flex-row gap-10'>
 
@@ -93,7 +93,7 @@ const NewInvoice = (
         </div>
 
         <div className='w-full md:w-2/3'>
-          <h2 className="text-xl text-coral-red font-semibold">Sales items</h2>
+          <h2 className="text-xl text-coral-red font-semibold">Purchase items</h2>
 
           <InvoiceItemsForm
             handleInvoiceItemSubmit={handleInvoiceItemSubmit}
@@ -117,4 +117,4 @@ const NewInvoice = (
   )
 }
 
-export default NewInvoice
+export default Purchase

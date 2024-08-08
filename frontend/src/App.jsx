@@ -10,6 +10,9 @@ import NotFound from './sections/NotFound';
 import Pdf from './sections/Pdf';
 import { Route, Routes } from 'react-router-dom';
 import { DataProvider } from './context/DataContext'
+import Purchase from './sections/Purchase';
+import SalesReturn from './sections/salesReturn';
+import PurchaseReturn from './sections/PurchaseReturn';
 
 const App = () => {
 
@@ -20,6 +23,9 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="invoices" element={<Invoices />} />
           <Route path="new-invoice" element={<NewInvoice />} />
+          <Route path="sales-return" element={<SalesReturn />} />
+          <Route path="purchase" element={<Purchase />} />
+          <Route path="purchase-return" element={<PurchaseReturn />} />
           <Route path="new-partner" element={<NewPartner />} />
           <Route path="edit-invoice/:id" element={<EditInvoice />} />
           <Route path="edit-partner/:id" element={<EditPartner />} />

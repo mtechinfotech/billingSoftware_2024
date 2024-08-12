@@ -70,6 +70,8 @@ const InvoiceForm = ({
       <button onClick={handInvoiceID} className='mt-7 px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600' type="submit">Save</button>
     </form>
   )
+
+  
 }
 
 export default InvoiceForm

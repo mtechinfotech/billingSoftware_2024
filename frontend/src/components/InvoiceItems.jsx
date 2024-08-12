@@ -10,14 +10,17 @@ const InvoiceItems = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID
         <div className='font-semibold sm:w-[200px] flex-1 pl-4 text-white'>
           Item description
         </div>
-        <div className='font-semibold sm:w-[50px] text-white'>
+        <div className='font-semibold sm:w-[80px] text-white'>
           Quantity
         </div>
+        <div className='font-semibold sm:w-[70px] text-white'>
+        Amount
+        </div>
         <div className='font-semibold sm:w-[50px] text-white'>
-          Rate
+          GST
         </div>
         <div className='font-semibold sm:w-[60px] text-white'>
-          Amount
+          Total
         </div>
         <div className='font-semibold sm:w-[60px] text-white'>
           Action
@@ -25,7 +28,12 @@ const InvoiceItems = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID
       </div>
       {filteredItems.length ? (
         filteredItems.map((item) => {
-          const formattedTotalAmount = (item.qty * item.rate).toLocaleString('en-US', {
+          const formattedTotalAmount = (item.qty * (item.rate * 18/100)+item.rate).toLocaleString('en-US', {
+            style: 'decimal',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+          const formattedTotallAmount = (item.rate * 18/100).toLocaleString('en-US', {
             style: 'decimal',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
@@ -36,6 +44,8 @@ const InvoiceItems = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID
               <div className="sm:w-[200px] flex-1 pl-2">{item.desc}</div>
               <div className="sm:w-[50px]">{item.qty}</div>
               <div className="sm:w-[50px]">{item.rate}</div>
+              {/* <div className="sm:w-[50px]">{item.gst}</div> */}
+              <div className="sm:w-[60px]">{formattedTotallAmount}</div>
               <div className="sm:w-[60px]">{formattedTotalAmount}</div>
               <div className="sm:w-[60px]">
                 <DeleteOutlined onClick={() => handleInvoiceItemDelete(item._id)} className='text-red-700 cursor-pointer' />

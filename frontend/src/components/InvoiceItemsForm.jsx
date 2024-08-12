@@ -1,5 +1,7 @@
 import React from 'react'
 import { CaretDownOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons'; 
+
 
 const InvoiceItemsForm = ({
   handleInvoiceItemSubmit, itemDesc, setItemDesc, itemQty, setItemQty, itemRate, setItemRate
@@ -20,7 +22,7 @@ const InvoiceItemsForm = ({
           value={itemQty}
           className='w-full input md:w-1/4 mt-2'
           type='number'
-          placeholder='Enter Quantity'
+          placeholder='Quantity'
           required
           onChange={(e) => setItemQty(e.target.value)}
         />
@@ -28,15 +30,29 @@ const InvoiceItemsForm = ({
         <input value={itemRate}
           className='w-full input md:w-1/4 mt-2'
           type='number'
-          placeholder='Enter Rate'
+          placeholder='Amount'
           required
           onChange={(e) => setItemRate(e.target.value)}
         />
+
+      <input value="18%"
+          className='w-full input md:w-1/4 mt-2 text-slate-500 truncate'
+          type='text'
+          placeholder='Enter GST'
+          readonly="true"
+          disabled
+          // onChange={(e) => setTotalPrice(e.target.value)}
+        />
+
+
       </div>
+      
 
       <button className='flex flex-row mt-3 px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600' type="submit"><CaretDownOutlined className='mr-2' /> Add new item<CaretDownOutlined className='ml-2' /></button>
     </form>
   )
-}
+};
+
+
 
 export default InvoiceItemsForm

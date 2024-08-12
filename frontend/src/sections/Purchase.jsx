@@ -44,7 +44,7 @@ const Purchase = (
       rate: itemRate
     }
     try {
-      const response = await axios.post(`${apiUrl}items`, createInoviceItem)
+      const response = await axios.post(`${apiUrl}purchase`, createInoviceItem)
       const AllInvoiceItems = [...invoiceItems, response.data];
       setInvoiceItems(AllInvoiceItems)
       // Clear
@@ -59,7 +59,7 @@ const Purchase = (
   // Delete Invoice item
   const handleInvoiceItemDelete = async (id) => {
     try {
-      await axios.delete(`${apiUrl}items/${id}`)
+      await axios.delete(`${apiUrl}purchase/${id}`)
       const invoiceItemsList = invoiceItems.filter(invoice => invoice._id !== id)
       setInvoiceItems(invoiceItemsList)
     } catch (err) {

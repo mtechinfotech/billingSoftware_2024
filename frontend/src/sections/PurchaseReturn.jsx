@@ -5,9 +5,10 @@ import InvoiceItems from '../components/InvoiceItems';
 import InvoiceItemsForm from '../components/InvoiceItemsForm';
 import SalesReturnfun from '../components/SalesReturn'
 import SalesReturnItemsForm from '../components/SalesReturnItemsForm';
-import PurchaseItemsForm from '../components/PurchaseItemForm';
 
+import PurchaseItemsForm from '../components/PurchaseItemForm';
 import PurchaseReturn from '../components/PurchaseReturn'
+
 import InvoiceForm from '../components/InvoiceForm';
 import { Helmet } from 'react-helmet';
 
@@ -50,7 +51,7 @@ const PurchaseReturnItem = (
       rate: itemRate
     }
     try {
-      const response = await axios.post(`${apiUrl}salesreturn`, createInoviceItem)
+      const response = await axios.post(`${apiUrl}purchasereturn`, createInoviceItem)
       const AllInvoiceItems = [...invoiceItems, response.data];
       setInvoiceItems(AllInvoiceItems)
       // Clear
@@ -65,7 +66,7 @@ const PurchaseReturnItem = (
   // Delete Invoice item
   const handleInvoiceItemDelete = async (id) => {
     try {
-      await axios.delete(`${apiUrl}salesreturn/${id}`)
+      await axios.delete(`${apiUrl}purchasereturn/${id}`)
       const invoiceItemsList = invoiceItems.filter(invoice => invoice._id !== id)
       setInvoiceItems(invoiceItemsList)
     } catch (err) {
@@ -78,7 +79,7 @@ const PurchaseReturnItem = (
       <Helmet>
         <title>New Invoices - Invoice App</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-4">Sales Return</h1>
+      <h1 className="text-2xl font-bold mb-4">Purchase Return</h1>
 
       <div className='flex flex-col md:flex-row gap-10'>
 
@@ -99,7 +100,7 @@ const PurchaseReturnItem = (
         </div>
 
         <div className='w-full md:w-2/3'>
-          <h2 className="text-xl text-coral-red font-semibold">Sales items</h2>
+          <h2 className="text-xl text-coral-red font-semibold">Return items</h2>
 
           <PurchaseItemsForm
             handleInvoiceItemSubmit={handleInvoiceItemSubmit}

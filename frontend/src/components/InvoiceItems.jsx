@@ -45,7 +45,10 @@ const InvoiceItems = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID
               <div className="sm:w-[50px]">{item.qty}</div>
               <div className="sm:w-[50px]">{item.rate}</div>
               {/* <div className="sm:w-[50px]">{item.gst}</div> */}
+              
+              {/* GSt Amount */}
               <div className="sm:w-[60px]">{formattedTotallAmount}</div>
+              {/* Total Amount */}
               <div className="sm:w-[60px]">{formattedTotalAmount}</div>
               <div className="sm:w-[60px]">
                 <DeleteOutlined onClick={() => handleInvoiceItemDelete(item._id)} className='text-red-700 cursor-pointer' />

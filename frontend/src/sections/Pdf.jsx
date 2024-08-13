@@ -89,12 +89,14 @@ const MyDocument = ({ invoiceDetails, partnerDetails, invoiceFilteredItems }) =>
           <Text style={styles.tableHeader}>Description</Text>
           <Text style={styles.tableHeader}>Quantity</Text>
           <Text style={styles.tableHeader}>Rate</Text>
+          <Text style={styles.tableHeader}>GST 18%</Text>
           <Text style={styles.tableHeader}>Total Amount</Text>
         </View>
 
 
         {invoiceFilteredItems.map((item, index) => {
-          totalAmount = totalAmount + (item.qty * item.rate)
+          // totalAmount = totalAmount + (item.qty * item.rate)
+          totalAmount = totalAmount + (item.qty * item.rate + (item.rate * 18/100))
 
           return (
             <View style={styles.tableRow}>
@@ -102,7 +104,8 @@ const MyDocument = ({ invoiceDetails, partnerDetails, invoiceFilteredItems }) =>
               <Text style={styles.tableCell}>{item.desc}</Text>
               <Text style={styles.tableCell}>{item.qty}</Text>
               <Text style={styles.tableCell}>{item.rate}</Text>
-              <Text style={styles.tableCell}>{item.qty * item.rate}</Text>
+              <Text style={styles.tableCell}>{item.rate * 18/100}</Text>
+              <Text style={styles.tableCell}>{item.qty * item.rate + (item.rate * 18/100)}</Text>
             </View>
           )
         })}

@@ -32,6 +32,15 @@ const SalesReturnItemsForm = ({
           required
           onChange={(e) => setItemRate(e.target.value)}
         />
+         <input value="18%"
+          className='w-full input md:w-1/4 mt-2 text-slate-500 truncate'
+          type='text'
+          placeholder='Enter GST'
+          readonly="true"
+          disabled
+          // onChange={(e) => setTotalPrice(e.target.value)}
+        />
+        
       </div>
 
       <button className='flex flex-row mt-3 px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600' type="submit"><CaretDownOutlined className='mr-2' /> Add new item<CaretDownOutlined className='ml-2' /></button>

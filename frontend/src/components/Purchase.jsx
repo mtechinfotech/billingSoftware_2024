@@ -6,18 +6,21 @@ const Purchase = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID }) 
 
   return (
     <>
-      <div className='flex gap-9 mt-7 bg-slate-600 py-3 rounded-tl-lg rounded-tr-lg'>
+     <div className='flex gap-9 mt-7 bg-slate-600 py-3 rounded-tl-lg rounded-tr-lg'>
         <div className='font-semibold sm:w-[200px] flex-1 pl-4 text-white'>
           Item description
         </div>
-        <div className='font-semibold sm:w-[50px] text-white'>
+        <div className='font-semibold sm:w-[80px] text-white'>
           Quantity
         </div>
+        <div className='font-semibold sm:w-[70px] text-white'>
+        Amount
+        </div>
         <div className='font-semibold sm:w-[50px] text-white'>
-          Rate
+          GST
         </div>
         <div className='font-semibold sm:w-[60px] text-white'>
-          Amount
+          Total
         </div>
         <div className='font-semibold sm:w-[60px] text-white'>
           Action

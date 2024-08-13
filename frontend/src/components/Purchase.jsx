@@ -25,7 +25,12 @@ const Purchase = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID }) 
       </div>
       {filteredItems.length ? (
         filteredItems.map((item) => {
-          const formattedTotalAmount = (item.qty * item.rate).toLocaleString('en-US', {
+          const formattedTotalAmount = (item.qty * item.rate + (item.rate * 18/100)).toLocaleString('en-US', {
+            style: 'decimal',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+          const formattedTotallAmount = (item.rate * 18/100).toLocaleString('en-US', {
             style: 'decimal',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
@@ -36,6 +41,8 @@ const Purchase = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID }) 
               <div className="sm:w-[200px] flex-1 pl-2">{item.desc}</div>
               <div className="sm:w-[50px]">{item.qty}</div>
               <div className="sm:w-[50px]">{item.rate}</div>
+              {/* <div className="sm:w-[60px]">{formattedTotalAmount}</div> */}
+              <div className="sm:w-[60px]">{formattedTotallAmount}</div>
               <div className="sm:w-[60px]">{formattedTotalAmount}</div>
               <div className="sm:w-[60px]">
                 <DeleteOutlined onClick={() => handleInvoiceItemDelete(item._id)} className='text-red-700 cursor-pointer' />

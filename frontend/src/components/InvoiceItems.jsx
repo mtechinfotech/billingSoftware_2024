@@ -28,7 +28,7 @@ const InvoiceItems = ({ invoiceItems, handleInvoiceItemDelete, generateInvoiceID
       </div>
       {filteredItems.length ? (
         filteredItems.map((item) => {
-          const formattedTotalAmount = (item.qty * (item.rate * 18/100)+item.rate).toLocaleString('en-US', {
+          const formattedTotalAmount = (item.qty * item.rate + (item.rate * 18/100)).toLocaleString('en-US', {
             style: 'decimal',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
